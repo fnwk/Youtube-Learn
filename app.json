@@ -8,12 +8,14 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.fnwk.youtubelearn"
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#ff00ff"
-      }
+      },
+      "package": "com.fnwk.youtubelearn"
     },
     "web": {
       "bundler": "metro",

@@ -2,12 +2,14 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 import common from "../locales/en/common.json";
+import welcome from "../locales/en/welcome.json";
 
 export type AppLanguage = "en";
 
 export const resources = {
   en: {
     common,
+    welcome,
   },
 };
 

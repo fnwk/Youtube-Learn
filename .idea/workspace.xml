@@ -4,7 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5427aee5-f6ee-4d78-b0fc-9cee711883bb" name="Changes" comment="" />
+    <list default="true" id="5427aee5-f6ee-4d78-b0fc-9cee711883bb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/utils/cn.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/_layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/register.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/airplay-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/app-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/app-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/backward-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/clock-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/forward-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/fullscreen-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/home-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/leftarrow-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/likes-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/notification-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/pause-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/person-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/play-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/search-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/settings-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/views-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/volume-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/usePoppinsFonts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/hooks/usePoppinsFonts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/i18n.ts" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/i18n.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/useTranslation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/useTranslation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metro.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/metro.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +47,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2wrffhRMTerAV6g8aOHikHV1DNh" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -32,10 +66,15 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/Users/filipwnek/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "ts.external.directory.path": "/Users/filipwnek/Projects/youtube-learn/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/utils" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -52,6 +91,7 @@
       <option name="presentableId" value="Default" />
       <updated>1700229558056</updated>
       <workItem from="1746804719189" duration="1547000" />
+      <workItem from="1746834269377" duration="3121000" />
     </task>
     <servers />
   </component>
