@@ -7,6 +7,7 @@ module.exports = {
       white: "#FFFFFF",
       gray: "#8D99AE",
       dark: "#2B2D42",
+      red: "#C71F1F",
     },
     extend: {
       fontSize: {

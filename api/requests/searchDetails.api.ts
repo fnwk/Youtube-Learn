@@ -1,5 +1,8 @@
 import { apiClient } from "../api.config";
-import type { YoutubeSearchResponse } from "@/types/youtube";
+import type {
+  YoutubeSearchResponse,
+  YoutubeVideoDetailsResponse,
+} from "@/types/youtube";
 
 interface SearchParams {
   query: string;
@@ -30,5 +33,26 @@ export const searchVideos = async ({
     return data;
   } catch (error) {
     throw new Error("Failed to fetch videos");
+  }
+};
+
+export const getVideoDetails = async (
+  videoId: string,
+): Promise<YoutubeVideoDetailsResponse> => {
+  try {
+    const { data } = await apiClient.get<YoutubeVideoDetailsResponse>(
+      "/videos",
+      {
+        params: {
+          part: "snippet,statistics",
+          id: videoId,
+          key: process.env.EXPO_PUBLIC_API_KEY,
+        },
+      },
+    );
+
+    return data;
+  } catch (error) {
+    throw new Error("Failed to fetch video details");
   }
 };

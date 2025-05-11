@@ -5,6 +5,7 @@ import common from "../locales/en/common.json";
 import welcome from "../locales/en/welcome.json";
 import home from "../locales/en/home.json";
 import search from "../locales/en/search.json";
+import video from "../locales/en/video.json";
 
 export type AppLanguage = "en";
 
@@ -14,6 +15,7 @@ export const resources = {
     welcome,
     home,
     search,
+    video,
   },
 };
 

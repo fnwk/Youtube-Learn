@@ -1,7 +1,13 @@
-import { View, Image } from "react-native";
+import { View, Image, Pressable } from "react-native";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+} from "react-native-reanimated";
 import { cva } from "class-variance-authority";
 import { StyledText } from "@/components/ui";
 import type { YoutubeVideo } from "@/types/youtube";
+import { router } from "expo-router";
 
 type Variant = "small" | "large";
 
@@ -27,15 +33,38 @@ const VideoCard = ({ video, variant = "small" }: VideoCardProps) => {
   const thumbnail =
     snippet.thumbnails.medium?.url || snippet.thumbnails.default?.url;
 
+  const scale = useSharedValue(1);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
+
+  const onPressIn = () => {
+    scale.value = withSpring(0.95, { damping: 10, stiffness: 200 });
+  };
+
+  const onPressOut = () => {
+    scale.value = withSpring(1, { damping: 10, stiffness: 200 });
+    router.push({ pathname: "/video/[id]", params: { id: video.id.videoId } });
+  };
+
   return (
     <View className={thumbnailVariants({ variant })}>
-      <Image
-        source={{ uri: thumbnail }}
-        className="rounded-2xl bg-dark w-full"
-        style={{
-          height: variant === "small" ? 112 : 225,
-        }}
-      />
+      <Pressable
+        onPressIn={onPressIn}
+        onPressOut={onPressOut}
+        unstable_pressDelay={500}
+      >
+        <Animated.View style={animatedStyle}>
+          <Image
+            source={{ uri: thumbnail }}
+            className="rounded-2xl bg-dark w-full"
+            style={{
+              height: variant === "small" ? 112 : 225,
+            }}
+          />
+        </Animated.View>
+      </Pressable>
 
       {variant === "large" && snippet.channelTitle && (
         <StyledText weight="bold" className="mt-2">

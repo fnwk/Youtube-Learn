@@ -1,0 +1,9 @@
+{
+  "stats": "Statistics",
+  "details": "Details",
+  "description": "Description",
+  "notes": "Notes",
+  "views": "{{count}} views",
+  "likes": "{{count}} likes",
+  "failedToLoad": "Failed to load video details"
+}

@@ -1,6 +1,7 @@
-/** ---------------------------------
- *  Snippet & Video
- *  ---------------------------------
+/**
+ * ---------------------------------
+ * Snippet & Video
+ * ---------------------------------
  */
 
 export interface VideoThumbnail {
@@ -23,8 +24,36 @@ export interface YoutubeVideo {
 }
 
 /** ---------------------------------
- *  Search Response
- *  ---------------------------------
+ * Video Details Response
+ * ---------------------------------
+ */
+
+export interface YoutubeVideoResponse {
+  items: YoutubeVideoItem[];
+  kind: string;
+  etag: string;
+  pageInfo: {
+    totalResults: number;
+    resultsPerPage: number;
+  };
+}
+
+interface YoutubeVideoItem {
+  id: string;
+  snippet: {
+    title: string;
+    description: string;
+    channelTitle: string;
+  };
+  statistics: {
+    viewCount: string;
+    likeCount: string;
+  };
+}
+
+/** ---------------------------------
+ * Search Response
+ * ---------------------------------
  */
 
 export interface PageInfo {
