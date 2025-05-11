@@ -1,68 +1,56 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
-
+# Find all .svg files
 IFS=$'\n'
 paths=($(find . -name "*.svg"))
 unset IFS
 
-echo "" > Icon.tsx
+# Check if any .svg files are found
+if [ ${#paths[@]} -eq 0 ]; then
+  echo "No .svg files found."
+  exit 1
+fi
 
-echo "import React from 'react';" >> Icon.tsx
-echo "import {SvgProps} from 'react-native-svg';" >> Icon.tsx
-#!/bin/bash          
-cd "$(dirname "$0")"
+# Create or overwrite Icon.tsx
+output_file="Icon.tsx"
+echo "" > $output_file
+echo "import React from 'react';" >> $output_file
+echo "import { SvgProps } from 'react-native-svg';" >> $output_file
 
-
-IFS=$'\n'
-paths=($(find . -name "*.svg"))
-unset IFS
-
-echo "" > Icon.tsx
-
-echo "import React from 'react';" >> Icon.tsx
-echo "import {SvgProps} from 'react-native-svg';" >> Icon.tsx
-
-
-
-for i in "${paths[@]}"
-do
-   file_name=$(basename "$i" .svg)  # Extract only the file name without the path and ".svg" extension
-   file_name_lowercase=$(echo "$file_name" | sed -r 's/(^|-)(\w)/\U\2/g; s/-//g')  # Convert to lowercase and remove hyphens
-   echo "import $file_name_lowercase from  '$i'" >> Icon.tsx
+# Import all SVGs
+for i in "${paths[@]}"; do
+  file_name=$(basename "$i" .svg)
+  file_name_pascal=$(echo "$file_name" | sed -r 's/(^|-)(\w)/\U\2/g; s/-//g')
+  echo "import $file_name_pascal from '$i';" >> $output_file
 done
 
-echo "" >> Icon.tsx
-echo "const ICONS = {" >> Icon.tsx
-
-for i in "${paths[@]}"
-do
-   file_name=$(basename "$i" .svg)  # Extract only the file name without the path and ".svg" extension
-   file_name_lowercase=$(echo "$file_name" | sed -r 's/(^|-)(\w)/\U\2/g; s/-//g')  # Convert to lowercase and remove hyphens
-   echo "$file_name_lowercase," >> Icon.tsx
+# Create ICONS object
+echo "" >> $output_file
+echo "const ICONS = {" >> $output_file
+for i in "${paths[@]}"; do
+  file_name=$(basename "$i" .svg)
+  file_name_pascal=$(echo "$file_name" | sed -r 's/(^|-)(\w)/\U\2/g; s/-//g')
+  echo "  $file_name_pascal," >> $output_file
 done
+echo "};" >> $output_file
 
-echo "}" >> Icon.tsx
+# Add TypeScript types and AppIcon component
+cat <<EOL >> $output_file
 
-echo "
 export type IconType = keyof typeof ICONS;
 
-" >> Icon.tsx
-
-echo "
 interface IconProps extends SvgProps {
-    name: IconType;
-    className?: string;
+  name: IconType;
+  className?: string;
 }
-" >> Icon.tsx
 
-
-
-echo "
-const AppIcon = ({name, ...props}: IconProps) => {
-    const CurrentIcon = ICONS[name]
-    return <CurrentIcon {...props} />
-}
+const AppIcon = ({ name, ...props }: IconProps) => {
+  const CurrentIcon = ICONS[name];
+  return <CurrentIcon {...props} />;
+};
 
 export const Icon = React.memo(AppIcon);
-" >> Icon.tsx
+EOL
+
+echo "Icon.tsx has been generated successfully."

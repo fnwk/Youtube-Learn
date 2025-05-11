@@ -15,9 +15,6 @@ export const searchVideos = async ({
   maxResults = 10,
 }: SearchParams): Promise<YoutubeSearchResponse> => {
   try {
-    console.log("test", process.env.API_KEY, process.env.API_URL);
-
-    // Make the API request
     const { data } = await apiClient.get<YoutubeSearchResponse>("/search", {
       params: {
         part: "snippet",
@@ -30,13 +27,8 @@ export const searchVideos = async ({
       },
     });
 
-    console.log("data", data);
     return data;
   } catch (error) {
-    // Log any errors that occur during the API request
-    console.error("Error fetching videos:", error);
-
-    // Optionally, return a fallback value or rethrow the error
     throw new Error("Failed to fetch videos");
   }
 };

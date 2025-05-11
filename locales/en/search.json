@@ -1,0 +1,9 @@
+{
+  "resultsLabel": "~{{numberOfResults}} results for: <0>{{searchTerm}}</0>",
+  "sortBy": "Sort by: <0>{{sortBy}}</0>",
+  "sortingOptions": [
+    "Most popular",
+    "Upload date: latest",
+    "Upload date: oldest"
+  ]
+}

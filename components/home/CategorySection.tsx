@@ -4,6 +4,7 @@ import { VideoCard } from "../video";
 import { View, FlatList } from "react-native";
 import { useSearchVideos } from "@/api/queries/searchVideos.query";
 import { router } from "expo-router";
+import type { YoutubeVideo } from "@/types/youtube";
 
 interface CategorySectionProps {
   title: string;
@@ -17,8 +18,11 @@ const CategorySection = ({ title }: CategorySectionProps) => {
   );
 
   const showMore = () => {
-    router.push("/search");
+    router.push({ pathname: "/search", params: { searchTerm: title } });
   };
+
+  const videos: YoutubeVideo[] =
+    data?.pages.flatMap((page) => page.items as YoutubeVideo[]) || [];
 
   return (
     <View className="border-b-dark border-b-2 mt-4 pb-8">
@@ -32,20 +36,9 @@ const CategorySection = ({ title }: CategorySectionProps) => {
       </View>
 
       <FlatList
-        data={
-          data
-            ? data.pages
-                .flatMap((page) => page.items)
-                .map((video) => ({
-                  id: video.id.videoId || video.id,
-                  thumbnail: video.snippet.thumbnails.medium.url,
-                  channelName: video.snippet.channelTitle,
-                  title: video.snippet.title,
-                  uploadDate: video.snippet.publishedAt,
-                }))
-            : []
-        }
+        data={videos}
         horizontal
+        keyExtractor={(item) => item.id.videoId}
         showsHorizontalScrollIndicator={false}
         onEndReached={() => fetchNextPage()}
         contentContainerStyle={{
@@ -53,8 +46,8 @@ const CategorySection = ({ title }: CategorySectionProps) => {
           flexDirection: "row",
         }}
         renderItem={({ item }) => (
-          <View className={"mr-4"}>
-            <VideoCard {...item} variant={"small"} />
+          <View className="mr-4">
+            <VideoCard video={item} variant="small" />
           </View>
         )}
       />

@@ -1,15 +1,12 @@
 import { View, Image } from "react-native";
 import { cva } from "class-variance-authority";
 import { StyledText } from "@/components/ui";
-import { VideoCardData } from "@/types/video";
+import type { YoutubeVideo } from "@/types/youtube";
 
 type Variant = "small" | "large";
 
-interface VideoCardProps
-  extends Pick<
-    VideoCardData,
-    "thumbnail" | "title" | "uploadDate" | "channelName"
-  > {
+interface VideoCardProps {
+  video: YoutubeVideo;
   variant?: Variant;
 }
 
@@ -25,13 +22,11 @@ const thumbnailVariants = cva("rounded-2xl", {
   },
 });
 
-const VideoCard = ({
-  thumbnail,
-  title,
-  uploadDate,
-  channelName,
-  variant = "small",
-}: VideoCardProps) => {
+const VideoCard = ({ video, variant = "small" }: VideoCardProps) => {
+  const { snippet } = video;
+  const thumbnail =
+    snippet.thumbnails.medium?.url || snippet.thumbnails.default?.url;
+
   return (
     <View className={thumbnailVariants({ variant })}>
       <Image
@@ -42,9 +37,9 @@ const VideoCard = ({
         }}
       />
 
-      {variant === "large" && channelName && (
+      {variant === "large" && snippet.channelTitle && (
         <StyledText weight="bold" className="mt-2">
-          {channelName}
+          {snippet.channelTitle}
         </StyledText>
       )}
 
@@ -55,10 +50,10 @@ const VideoCard = ({
           size={variant === "large" ? "lg" : undefined}
           weight={variant === "small" ? "medium" : undefined}
         >
-          {title}
+          {snippet.title}
         </StyledText>
         <StyledText size="sm" className="text-muted mt-1 text-right">
-          {uploadDate}
+          {new Date(snippet.publishedAt).toLocaleDateString("pl-PL")}
         </StyledText>
       </View>
     </View>

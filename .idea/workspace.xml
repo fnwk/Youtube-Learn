@@ -5,38 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5427aee5-f6ee-4d78-b0fc-9cee711883bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/utils/cn.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/svg.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/_layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/register.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/airplay-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/app-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/app-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/backward-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/clock-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/forward-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/fullscreen-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/home-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/leftarrow-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/likes-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/notification-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/pause-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/person-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/play-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/search-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/settings-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/views-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/volume-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/usePoppinsFonts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/hooks/usePoppinsFonts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/queries/categoryVideos.query.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/requests/youtube.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/requests/youtube.api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(main)/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(main)/search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/search.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/welcome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/welcome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/create-icon.sh" beforeDir="false" afterPath="$PROJECT_DIR$/assets/create-icon.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/home/CategorySection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/CategorySection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/home/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/search/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/search/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/CustomTextInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/CustomTextInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/video/VideoCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/video/VideoCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/i18n/i18n.ts" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/i18n.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/i18n/useTranslation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/useTranslation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metro.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/metro.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/youtube.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/youtube.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +42,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Jest.api.test.tsx.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/filipwnek/Projects/youtube-learn",
@@ -64,6 +50,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "/Users/filipwnek/Projects/youtube-learn/node_modules/jest",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
     "ts.external.directory.path": "/Users/filipwnek/Projects/youtube-learn/node_modules/typescript/lib",
@@ -92,6 +79,7 @@
       <updated>1700229558056</updated>
       <workItem from="1746804719189" duration="1547000" />
       <workItem from="1746834269377" duration="3121000" />
+      <workItem from="1746974344914" duration="2329000" />
     </task>
     <servers />
   </component>

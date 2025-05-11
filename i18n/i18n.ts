@@ -4,6 +4,7 @@ import { initReactI18next } from "react-i18next";
 import common from "../locales/en/common.json";
 import welcome from "../locales/en/welcome.json";
 import home from "../locales/en/home.json";
+import search from "../locales/en/search.json";
 
 export type AppLanguage = "en";
 
@@ -12,6 +13,7 @@ export const resources = {
     common,
     welcome,
     home,
+    search,
   },
 };
 

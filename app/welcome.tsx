@@ -11,8 +11,6 @@ const WelcomeScreen = () => {
   const { t } = useT("welcome");
   const { setLoginStatus } = useAuthStore((state) => state);
 
-  console.log("Login screen");
-
   const handleLogin = () => {
     setLoginStatus(true);
     router.replace("/(main)");
@@ -38,7 +36,7 @@ const WelcomeScreen = () => {
           {t("title")}
         </StyledText>
         <AppButton title={t("logInBtn")} onPress={handleLogin} />
-        <StyledText size="md" color="white" className="text-center  mt-5">
+        <StyledText size="md" color="white" className="text-center mt-5">
           <Trans
             i18nKey="welcome:agreeText"
             components={[
@@ -52,7 +50,7 @@ const WelcomeScreen = () => {
                 size="md"
                 color="dark"
                 underline
-                onPress={() => openURL("youtube.com")}
+                onPress={() => openURL("https://youtube.com")}
               />,
             ]}
           />
