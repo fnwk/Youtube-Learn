@@ -13,10 +13,14 @@ import { useRef, useState } from "react";
 import VideoControls from "./VideoControls";
 import { router } from "expo-router";
 
+interface VideoPlayerProps {
+  setCurrentTime: (time: number) => void;
+}
+
 const { width } = Dimensions.get("window");
 const height = (width * 9) / 16;
 
-const VideoPlayer = () => {
+const VideoPlayer = ({ setCurrentTime: sendCurrentTime }: VideoPlayerProps) => {
   const videoRef = useRef<VideoRef>(null);
   const [paused, setPaused] = useState(false);
   const [muted, setMuted] = useState(false);
@@ -32,6 +36,7 @@ const VideoPlayer = () => {
     const newTime = currentTime + seconds;
     videoRef.current?.seek?.(newTime);
     setCurrentTime(newTime);
+    sendCurrentTime(newTime);
   };
 
   const handleVideoFocus = () => {
@@ -49,6 +54,7 @@ const VideoPlayer = () => {
 
   const handleProgress = (data: OnProgressData) => {
     setCurrentTime(data.currentTime);
+    sendCurrentTime(data.currentTime);
   };
 
   const handleSlide = (value: number) => {

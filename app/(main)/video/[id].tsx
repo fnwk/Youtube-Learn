@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { StyledText } from "@/components/ui";
 import VideoPlayer from "@/components/video/player/VideoPlayer";
@@ -20,6 +20,7 @@ const VideoScreen = () => {
   const { videoDetails, isLoading, isError } = useVideoDetails(
     typeof videoId === "string" ? videoId : "",
   );
+  const [currentTime, setCurrentTime] = useState(0);
 
   if (isLoading || !videoId) {
     return (
@@ -51,7 +52,7 @@ const VideoScreen = () => {
   console.log("sippet", videoDetails.snippet);
   return (
     <View className="flex-1 bg-white ">
-      <VideoPlayer />
+      <VideoPlayer setCurrentTime={setCurrentTime} />
       <View className="p-6 flex-1">
         <StyledText
           size="2xl"
@@ -72,21 +73,13 @@ const VideoScreen = () => {
           </StyledText>
         </View>
 
-        <TabbedContent description={description} />
-
-        <StyledText size="sm" weight="semibold" className="mt-4">
-          {t("stats")}
-        </StyledText>
-        <View className="flex-row mt-3 justify-between pb-10">
-          <StatisticsItem
-            value={t("views", { count: viewCount })}
-            iconName="views"
-          />
-          <StatisticsItem
-            value={t("views", { count: viewCount })}
-            iconName="likes"
-          />
-        </View>
+        <TabbedContent
+          description={description}
+          videoId={typeof videoId === "string" ? videoId : videoId[0]}
+          currentTime={currentTime}
+          viewCount={viewCount}
+          likeCount={likeCount}
+        />
       </View>
     </View>
   );

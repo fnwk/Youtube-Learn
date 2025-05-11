@@ -3,6 +3,8 @@ import { Pressable, ScrollView, View } from "react-native";
 import { StyledText } from "../ui";
 import { useT } from "@/i18n/useTranslation";
 import { useState } from "react";
+import Notes from "./Notes";
+import StatisticsItem from "./StatisticsItem";
 
 interface TabProps {
   title: string;
@@ -12,6 +14,10 @@ interface TabProps {
 
 interface TabbedContentProps {
   description: string;
+  currentTime: number;
+  videoId: string;
+  viewCount: number;
+  likeCount: number;
 }
 
 const Tab = ({ title, isActive, onPress }: TabProps) => {
@@ -30,7 +36,13 @@ const Tab = ({ title, isActive, onPress }: TabProps) => {
   );
 };
 
-const TabbedContent = ({ description }: TabbedContentProps) => {
+const TabbedContent = ({
+  description,
+  currentTime,
+  videoId,
+  viewCount,
+  likeCount,
+}: TabbedContentProps) => {
   const { t } = useT("video");
 
   const [activeTab, setActiveTab] = useState(0);
@@ -49,13 +61,26 @@ const TabbedContent = ({ description }: TabbedContentProps) => {
           onPress={() => setActiveTab(1)}
         />
       </View>
-      <ScrollView className="flex-1">
-        {activeTab === 0 ? (
+      {activeTab === 0 ? (
+        <ScrollView className="flex-1">
           <StyledText className="p-4">{description}</StyledText>
-        ) : (
-          <StyledText className="p-4"></StyledText>
-        )}
-      </ScrollView>
+          <StyledText size="sm" weight="semibold" className="mt-4">
+            {t("stats")}
+          </StyledText>
+          <View className="flex-row mt-3 justify-between pb-10">
+            <StatisticsItem
+              value={t("views", { count: viewCount })}
+              iconName="views"
+            />
+            <StatisticsItem
+              value={t("views", { count: likeCount })}
+              iconName="likes"
+            />
+          </View>
+        </ScrollView>
+      ) : (
+        <Notes currentTime={currentTime} videoId={videoId} />
+      )}
     </View>
   );
 };

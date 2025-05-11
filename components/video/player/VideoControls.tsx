@@ -2,6 +2,7 @@ import { View, Dimensions } from "react-native";
 import Slider from "@react-native-community/slider";
 import { IconButton, StyledText } from "@/components/ui";
 import { tailwindColors } from "@/utils/colors";
+import formatTime from "@/utils/formatTime";
 
 type Props = {
   paused: boolean;
@@ -14,14 +15,6 @@ type Props = {
   currentTime: number;
   duration: number;
   onSlide: (value: number) => void;
-  onToggleFullscreen: () => void;
-  isFullscreen: boolean;
-};
-
-const formatTime = (time: number) => {
-  const mins = Math.floor(time / 60);
-  const secs = Math.floor(time % 60);
-  return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
 };
 
 const VideoControls = ({
@@ -35,8 +28,6 @@ const VideoControls = ({
   currentTime,
   duration,
   onSlide,
-  onToggleFullscreen,
-  isFullscreen,
 }: Props) => {
   return (
     <View className="absolute top-0 left-0 right-0 bottom-0 justify-between p-4 pb-0 w-full">
