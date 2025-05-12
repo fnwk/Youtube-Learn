@@ -1,27 +1,38 @@
 import { TextInput, View } from "react-native";
-import { useEffect, useRef } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { CustomTextInput, StyledText } from "../ui";
 import { useT } from "@/i18n/useTranslation";
 import { Trans } from "react-i18next";
+import SortingModal from "./SortingModal";
+import { SortingOption, SortingOptions } from "@/types/sorting";
 
 interface SearchHeaderProps {
   inputFocused?: boolean;
   searchTerm: string;
   totalResults: number;
+  sortingOption: SortingOption;
   setSearchTerm: (value: string) => void;
+  setSortingOption: (value: SortingOption) => void;
 }
 
 const SearchHeader = ({
   inputFocused = false,
   searchTerm,
   totalResults,
+  sortingOption,
   setSearchTerm,
+  setSortingOption,
 }: SearchHeaderProps) => {
   const { t } = useT("search");
   const inputRef = useRef<TextInput>(null);
   const sortingOptions = t("sortingOptions", {
     returnObjects: true,
-  }) as string[];
+  }) as SortingOptions;
+
+  const [isSortingModalVisible, toggleIsSortingModalVisible] = useReducer(
+    (state) => !state,
+    false,
+  );
 
   useEffect(() => {
     if (inputFocused) {
@@ -49,15 +60,24 @@ const SearchHeader = ({
         />
       </StyledText>
 
-      <StyledText className="w-full text-right mt-2">
+      <StyledText
+        className="w-full text-right mt-2"
+        onPress={toggleIsSortingModalVisible}
+      >
         <Trans
           i18nKey="search:sortBy"
           values={{
-            sortBy: sortingOptions[0],
+            sortBy: sortingOptions[sortingOption],
           }}
           components={[<StyledText weight="semibold" />]}
         />
       </StyledText>
+
+      <SortingModal
+        visible={isSortingModalVisible}
+        onRequestClose={toggleIsSortingModalVisible}
+        onConfirm={setSortingOption}
+      />
     </View>
   );
 };

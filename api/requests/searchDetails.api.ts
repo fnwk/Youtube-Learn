@@ -1,3 +1,4 @@
+import { SortingOption } from "@/types/sorting";
 import { apiClient } from "../api.config";
 import type {
   YoutubeSearchResponse,
@@ -6,7 +7,7 @@ import type {
 
 interface SearchParams {
   query: string;
-  sort: "date" | "viewCount";
+  sort: SortingOption;
   pageToken?: string | unknown;
   maxResults?: number;
 }

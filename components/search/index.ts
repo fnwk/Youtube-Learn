@@ -1,3 +1,4 @@
 import Header from "./Header";
+import SortingModal from "./SortingModal";
 
-export { Header };
+export { Header, SortingModal };

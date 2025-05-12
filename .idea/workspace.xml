@@ -5,26 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5427aee5-f6ee-4d78-b0fc-9cee711883bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/requests/videoDetails.req.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/thumb.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__tests__/youtubeApi.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/youtubeApi.test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/queries/searchVideos.query.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/queries/searchVideos.query.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/requests/youtube.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/requests/searchDetails.api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(main)/video/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/video/[id].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/backward.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/backward.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/forward.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/forward.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/fullscreen.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/fullscreen.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/leftarrow.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/leftarrow.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/pause.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/pause.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/play.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/play.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/volume.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/volume.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/video/broadchurch.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/IconButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/IconButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/youtube.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/youtube.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/requests/searchDetails.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/requests/searchDetails.api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/search/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/search/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/search/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/search/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locales/en/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/locales/en/common.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locales/en/search.json" beforeDir="false" afterPath="$PROJECT_DIR$/locales/en/search.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +71,7 @@
       <workItem from="1746804719189" duration="1547000" />
       <workItem from="1746834269377" duration="3121000" />
       <workItem from="1746974344914" duration="2944000" />
-      <workItem from="1746979523880" duration="3418000" />
+      <workItem from="1746979523880" duration="4035000" />
     </task>
     <servers />
   </component>

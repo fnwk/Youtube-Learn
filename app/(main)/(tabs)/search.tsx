@@ -6,17 +6,20 @@ import { VideoCard } from "@/components/video";
 import Header from "@/components/search/Header";
 import type { YoutubeVideo } from "@/types/youtube";
 import { useDebounce } from "@/utils/hooks/useDebounce";
+import { SortingOption } from "@/types/sorting";
 
 const Search = () => {
   const { searchTerm, focused } = useLocalSearchParams();
   const [input, setInput] = useState(
     typeof searchTerm === "string" ? searchTerm : searchTerm?.[0] || "",
   );
+  const [sortingOption, setSortingOption] =
+    useState<SortingOption>("viewCount");
 
   const debouncedQuery = useDebounce(input, 600);
   const { data, fetchNextPage, isFetchingNextPage } = useSearchVideos(
     debouncedQuery,
-    "viewCount",
+    sortingOption,
   );
 
   const videos: YoutubeVideo[] =
@@ -33,8 +36,10 @@ const Search = () => {
       <Header
         inputFocused={focused === "1"}
         searchTerm={input}
-        setSearchTerm={setInput}
         totalResults={data?.pages[0].pageInfo?.totalResults ?? 0}
+        sortingOption={sortingOption}
+        setSearchTerm={setInput}
+        setSortingOption={setSortingOption}
       />
       <FlatList
         data={videos}

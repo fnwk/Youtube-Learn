@@ -11,7 +11,7 @@ import { searchVideos } from "../requests/searchDetails.api";
 
 export const useSearchVideos = (
   searchTerm: string,
-  sort: "date" | "viewCount",
+  sort: "date" | "viewCount" | "relevance",
 ) =>
   useInfiniteQuery<YoutubeSearchResponse, Error>({
     queryKey: ["videos", "search", searchTerm, sort],
