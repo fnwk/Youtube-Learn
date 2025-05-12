@@ -1,4 +1,4 @@
-import { searchVideos } from "@/api/requests/searchDetails.api";
+import { searchVideos } from "@/api/requests/searchDetails.req";
 import { apiClient } from "@/api/api.config";
 import type { YoutubeSearchResponse } from "@/types/youtube";
 

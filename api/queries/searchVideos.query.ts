@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import type { YoutubeSearchResponse } from "@/types/youtube";
-import { searchVideos } from "../requests/searchDetails.api";
+import { searchVideos } from "../requests/searchDetails.req";
 
 /**
  * Custom React Query hook for infinite scrolling YouTube video search
