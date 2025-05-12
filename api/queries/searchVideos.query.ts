@@ -26,4 +26,5 @@ export const useSearchVideos = (
     getNextPageParam: (lastPage) => lastPage.nextPageToken ?? undefined,
     staleTime: 1000 * 60 * 15,
     initialPageParam: "",
+    retry: false,
   });

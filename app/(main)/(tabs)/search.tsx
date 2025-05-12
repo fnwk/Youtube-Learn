@@ -8,8 +8,11 @@ import type { YoutubeVideo } from "@/types/youtube";
 import { useDebounce } from "@/utils/hooks/useDebounce";
 import { SortingOption } from "@/types/sorting";
 import SkeletonContainer from "@/components/ui/SkeletonContainer";
+import { StyledText } from "@/components/ui";
+import { useT } from "@/i18n/useTranslation";
 
 const Search = () => {
+  const { t } = useT("common");
   const { searchTerm, focused } = useLocalSearchParams();
   const [input, setInput] = useState(
     typeof searchTerm === "string" ? searchTerm : searchTerm?.[0] || "",
@@ -18,10 +21,8 @@ const Search = () => {
     useState<SortingOption>("viewCount");
 
   const debouncedQuery = useDebounce(input, 600);
-  const { data, fetchNextPage, isFetching, isLoading } = useSearchVideos(
-    debouncedQuery,
-    sortingOption,
-  );
+  const { data, fetchNextPage, isFetching, isLoading, isError } =
+    useSearchVideos(debouncedQuery, sortingOption);
 
   // Remove duplicates from the videos array (if any), flatten the pages, and map to unique video IDs
   const videos: YoutubeVideo[] = Array.from(
@@ -49,7 +50,7 @@ const Search = () => {
         setSortingOption={setSortingOption}
       />
       <FlatList
-        data={videos}
+        data={input !== debouncedQuery ? [] : videos}
         keyExtractor={(item) => item.id.videoId}
         onEndReached={() => fetchNextPage()}
         onEndReachedThreshold={0.4}
@@ -59,8 +60,21 @@ const Search = () => {
             <VideoCard video={item} variant="large" />
           </View>
         )}
+        ListEmptyComponent={() => (
+          <View>
+            {isLoading || isFetching || input !== debouncedQuery ? null : (
+              <StyledText
+                size="lg"
+                weight="semibold"
+                className="w-full text-center"
+              >
+                {t("notFound")}
+              </StyledText>
+            )}
+          </View>
+        )}
         ListFooterComponent={
-          isFetching || isLoading ? (
+          (isFetching || isLoading || input !== debouncedQuery) && !isError ? (
             <>
               {new Array(10).fill(null).map((_, idx) => (
                 <View className="px-8" key={idx}>

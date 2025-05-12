@@ -1,4 +1,5 @@
 {
   "searchPlaceholder": "Search Video",
-  "confirm": "Confirm"
+  "confirm": "Confirm",
+  "notFound": "No results found"
 }
