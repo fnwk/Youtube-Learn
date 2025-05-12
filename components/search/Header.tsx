@@ -1,5 +1,5 @@
 import { TextInput, View } from "react-native";
-import { useEffect, useReducer, useRef, useState } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import { CustomTextInput, StyledText } from "../ui";
 import { useT } from "@/i18n/useTranslation";
 import { Trans } from "react-i18next";
@@ -61,6 +61,7 @@ const SearchHeader = ({
       </StyledText>
 
       <StyledText
+        pressableClassName="w-full"
         className="w-full text-right mt-2"
         onPress={toggleIsSortingModalVisible}
       >

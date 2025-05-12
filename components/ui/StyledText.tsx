@@ -1,6 +1,17 @@
 import { Text, TextProps as RNTextProps } from "react-native";
 import { cva } from "class-variance-authority";
 import cn from "@/utils/cn";
+import AnimatedPressable from "./AnimatedPressable";
+
+/**
+ * Custom styled text component using NativeWind with optional animation on press
+ * @param size - Tailwind font size variant
+ * @param weight - Font weight (mapped to custom font family)
+ * @param underline - Whether text should be underlined
+ * @param color - Text color ("white" or "dark")
+ * @param className - Tailwind className override
+ * @param onPress - If provided, wraps text in AnimatedPressable with press animation
+ */
 
 type FontSize = "sm" | "base" | "md" | "lg" | "xl" | "2xl" | "3xl";
 type FontWeight = "normal" | "medium" | "semibold" | "bold";
@@ -13,6 +24,8 @@ interface StyledTextProps extends RNTextProps {
   color?: FontColor;
   className?: string;
   children?: React.ReactNode;
+  pressableClassName?: string;
+  onPress?: () => void;
 }
 
 const fontMap: Record<FontWeight, string> = {
@@ -35,7 +48,6 @@ const textVariants = cva("", {
     },
     underline: {
       true: "underline",
-      false: "",
     },
     color: {
       white: "text-white",
@@ -50,25 +62,36 @@ const textVariants = cva("", {
 });
 
 const StyledText = ({
-  size = "base",
+  size,
   weight = "normal",
-  underline = false,
-  color = "dark",
-  className = "",
+  underline,
+  color,
+  className,
   children,
   style,
+  pressableClassName,
+  onPress,
   ...props
 }: StyledTextProps) => {
-  const textClassNames = textVariants({ size, underline, color });
+  const composedClassName = cn(
+    textVariants({ size, underline, color }),
+    className,
+  );
 
-  return (
-    <Text
-      className={cn(textClassNames, className)}
-      style={[{ fontFamily: fontMap[weight] }, style]}
-      {...props}
-    >
+  const textStyles = [{ fontFamily: fontMap[weight] }, style];
+
+  const TextComponent = (
+    <Text className={composedClassName} style={textStyles} {...props}>
       {children}
     </Text>
+  );
+
+  return onPress ? (
+    <AnimatedPressable onPress={onPress} className={pressableClassName}>
+      {TextComponent}
+    </AnimatedPressable>
+  ) : (
+    TextComponent
   );
 };
 
