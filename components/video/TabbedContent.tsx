@@ -6,6 +6,15 @@ import { useState } from "react";
 import Notes from "./Notes";
 import StatisticsItem from "./StatisticsItem";
 
+/**
+ * Tabbed content component displaying description, statistics, and notes
+ * @param description - The description of the video
+ * @param currentTime - The current playback time of the video
+ * @param videoId - The ID of the video for associating notes
+ * @param viewCount - The number of views for the video
+ * @param likeCount - The number of likes for the video
+ */
+
 interface TabProps {
   title: string;
   isActive: boolean;

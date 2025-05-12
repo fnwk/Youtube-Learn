@@ -5,12 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5427aee5-f6ee-4d78-b0fc-9cee711883bb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/api/queries/searchVideos.query.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/queries/searchVideos.query.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/requests/searchDetails.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/requests/searchDetails.api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/search/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/search/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/search/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/search/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locales/en/common.json" beforeDir="false" afterPath="$PROJECT_DIR$/locales/en/common.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locales/en/search.json" beforeDir="false" afterPath="$PROJECT_DIR$/locales/en/search.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(main)/video/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/video/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/welcome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/welcome.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/home/CategorySection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/CategorySection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/video/player/VideoControls.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/video/player/VideoControls.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/video/player/VideoPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/video/player/VideoPlayer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/youtubelearn.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/youtubelearn.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/youtubelearn/Images.xcassets/AppIcon.appiconset/App-Icon-1024x1024@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/youtubelearn/Images.xcassets/AppIcon.appiconset/App-Icon-1024x1024@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/youtubelearn/Images.xcassets/SplashScreenBackground.colorset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/ios/youtubelearn/Images.xcassets/SplashScreenBackground.colorset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/youtubelearn/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/youtubelearn/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/youtubelearn/SplashScreen.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/ios/youtubelearn/SplashScreen.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locales/en/welcome.json" beforeDir="false" afterPath="$PROJECT_DIR$/locales/en/welcome.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +90,7 @@
       <workItem from="1746804719189" duration="1547000" />
       <workItem from="1746834269377" duration="3121000" />
       <workItem from="1746974344914" duration="2944000" />
-      <workItem from="1746979523880" duration="4035000" />
+      <workItem from="1746979523880" duration="4665000" />
     </task>
     <servers />
   </component>

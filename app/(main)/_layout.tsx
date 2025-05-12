@@ -15,6 +15,7 @@ export default function MainLayout() {
           headerShown: false,
         }}
       />
+      <Stack.Screen name="settings" options={{ headerShown: false }} />
     </Stack>
   );
 }

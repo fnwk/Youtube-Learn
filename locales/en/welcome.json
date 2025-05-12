@@ -1,5 +1,5 @@
 {
   "title": "Welcome to the best\nYouTube-based learning application.",
   "logInBtn": "Log in as guest",
-  "agreeText": "By continuing you agree with\n<0>Terms and Conditions</0> and <1>Privacy Policy</1>"
+  "agreeText": "<2>By continuing you agree with </2><0>Terms and Conditions</0><3> and </3><1>Privacy Policy</1>"
 }

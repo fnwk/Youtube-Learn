@@ -7,6 +7,15 @@ import { router } from "expo-router";
 import type { YoutubeVideo } from "@/types/youtube";
 import SkeletonContainer from "../ui/SkeletonContainer";
 
+/**
+ * A section component displaying a list of video cards for a specific category
+ * @param title - The title of the category, used to fetch relevant videos
+ *
+ * It fetches videos from an API based on the category title and displays them in a horizontal scroll list.
+ * If more videos are available, a "Show More" option is provided to navigate to the search page.
+ * It handles video list pagination and provides a skeleton loader during fetching.
+ */
+
 interface CategorySectionProps {
   title: string;
 }
@@ -31,17 +40,18 @@ const CategorySection = ({ title }: CategorySectionProps) => {
     ).values(),
   );
 
-  if (isLoading || isFetching) {
-    console.log(title, isLoading, isFetching);
-  }
-
   return (
     <View className="border-b-dark border-b-2 mt-4 pb-8">
       <View className="flex-row items-center justify-between pb-6 px-8">
-        <StyledText size="2xl" weight="semibold">
+        <StyledText size="2xl" weight="semibold" className="w-1/2 ">
           {title}
         </StyledText>
-        <StyledText underline onPress={showMore}>
+        <StyledText
+          underline
+          onPress={showMore}
+          className="text-right"
+          pressableClassName="w-1/2"
+        >
           {t("showMore")}
         </StyledText>
       </View>

@@ -27,6 +27,7 @@ interface IconButtonProps extends PressableProps {
   size?: number;
   style?: StyleProp<ViewStyle>;
   className?: string;
+  color?: string;
 }
 
 const IconButton = ({
@@ -35,6 +36,7 @@ const IconButton = ({
   size = 24,
   style,
   className = "",
+  color = "white",
   ...props
 }: IconButtonProps) => {
   const scale = useSharedValue(1);
@@ -67,7 +69,7 @@ const IconButton = ({
       ]}
       {...props}
     >
-      <Icon name={iconName} width={size} height={size} />
+      <Icon name={iconName} width={size} height={size} color={color} />
     </AnimatedPressable>
   );
 };

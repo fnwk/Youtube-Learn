@@ -26,6 +26,12 @@ const Note = ({ time, text }: Note) => {
   );
 };
 
+/**
+ * Notes section for adding and displaying time-specific video notes
+ * @param currentTime - The current playback time of the video
+ * @param videoId - The ID of the video to associate notes with
+ */
+
 const Notes = ({ currentTime, videoId }: NotesProps) => {
   const { t } = useT("video");
   const { getNotes, addNote, videos } = useNotesStore((state) => state);

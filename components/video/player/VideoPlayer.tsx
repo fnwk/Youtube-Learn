@@ -8,6 +8,7 @@ import {
 import Video, {
   OnLoadData,
   OnProgressData,
+  OnBufferData,
   VideoRef,
 } from "react-native-video";
 import {
@@ -19,11 +20,6 @@ import VideoControls from "./VideoControls";
 import { router } from "expo-router";
 import Toast from "react-native-toast-message";
 import { useT } from "@/i18n/useTranslation";
-
-/**
- * Custom video player component using react-native-video with overlay controls, AirPlay support, and fullscreen playback
- * @param setCurrentTime - Callback to sync current playback time with parent component
- */
 
 interface VideoPlayerProps {
   setCurrentTime: (time: number) => void;
@@ -45,12 +41,13 @@ const VideoPlayer = ({ setCurrentTime: sendCurrentTime }: VideoPlayerProps) => {
   const [duration, setDuration] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [buffering, setBuffering] = useState(false);
 
   const togglePlayPause = () => setPaused((prev) => !prev);
   const toggleMute = () => setMuted((prev) => !prev);
   const seekBy = (seconds: number) => {
-    const newTime = currentTime + seconds;
-    videoRef.current?.seek?.(newTime);
+    const newTime = Math.max(0, Math.min(duration, currentTime + seconds));
+    videoRef.current?.seek(newTime);
     setCurrentTime(newTime);
     sendCurrentTime(newTime);
   };
@@ -74,16 +71,24 @@ const VideoPlayer = ({ setCurrentTime: sendCurrentTime }: VideoPlayerProps) => {
     sendCurrentTime(data.currentTime);
   };
 
-  const handleSlide = (value: number) => {
+  const handleBuffer = (data: OnBufferData) => {
+    setBuffering(data.isBuffering);
+    if (!data.isBuffering) {
+      if (paused) {
+        setPaused(false);
+      }
+    }
+  };
+
+  const handleSeekComplete = (value: number) => {
     videoRef.current?.seek(value);
     setCurrentTime(value);
+    sendCurrentTime(value);
   };
 
   const toggleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
-    if (videoRef.current) {
-      videoRef.current.presentFullscreenPlayer();
-    }
+    videoRef.current?.presentFullscreenPlayer();
   };
 
   const toggleAirplay = () => {
@@ -98,15 +103,15 @@ const VideoPlayer = ({ setCurrentTime: sendCurrentTime }: VideoPlayerProps) => {
     showRoutePicker({ prioritizesVideoDevices: true });
   };
 
+  const showSpinner = loading || buffering;
+
   return (
     <View className="relative bg-black" style={{ width, height }}>
       <TouchableWithoutFeedback onPress={handleVideoFocus}>
         <View className="absolute top-0 left-0 right-0 bottom-0">
           <Video
             ref={videoRef}
-            source={{
-              uri: "https://bitmovin-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
-            }}
+            source={require("@/assets/video/broadchurch.mp4")}
             style={{ width: "100%", height, backgroundColor: "black" }}
             resizeMode="contain"
             paused={paused}
@@ -114,13 +119,16 @@ const VideoPlayer = ({ setCurrentTime: sendCurrentTime }: VideoPlayerProps) => {
             controls={false}
             onLoad={handleLoad}
             onProgress={handleProgress}
+            onBuffer={handleBuffer}
+            onEnd={() => setPaused(true)}
+            showNotificationControls={true}
           />
         </View>
       </TouchableWithoutFeedback>
 
-      {loading && (
-        <View className="absolute top-0 left-0 right-0 bottom-0 items-center justify-center bg-[#00000025]">
-          <ActivityIndicator size="small" color="#fff" />
+      {showSpinner && (
+        <View className="absolute top-0 left-0 right-0 bottom-0 items-center justify-center bg-[#00000088]">
+          <ActivityIndicator size="large" color="#fff" />
         </View>
       )}
 
@@ -147,7 +155,8 @@ const VideoPlayer = ({ setCurrentTime: sendCurrentTime }: VideoPlayerProps) => {
           onBack={() => router.back()}
           currentTime={currentTime}
           duration={duration}
-          onSlide={handleSlide}
+          onSeekComplete={handleSeekComplete}
+          loading={showSpinner}
         />
       )}
     </View>

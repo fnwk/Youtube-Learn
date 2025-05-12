@@ -2,7 +2,7 @@ import { Icon } from "@/assets/Icon";
 import { AppButton, StyledText } from "@/components/ui";
 import { useT } from "@/i18n/useTranslation";
 import { Trans } from "react-i18next";
-import { View } from "react-native";
+import { Dimensions, View } from "react-native";
 import { openURL } from "expo-linking";
 import { useAuthStore } from "@/stores/auth.store";
 import { router } from "expo-router";
@@ -13,7 +13,7 @@ const WelcomeScreen = () => {
 
   const handleLogin = () => {
     setLoginStatus(true);
-    router.replace("/(main)");
+    router.replace("/(main)/(tabs)");
   };
 
   return (
@@ -36,7 +36,8 @@ const WelcomeScreen = () => {
           {t("title")}
         </StyledText>
         <AppButton title={t("logInBtn")} onPress={handleLogin} />
-        <StyledText size="md" color="white" className="text-center mt-5">
+
+        <View className="flex-grow-0 flex-row items-start flex-wrap justify-center mt-6  w-full">
           <Trans
             i18nKey="welcome:agreeText"
             components={[
@@ -44,6 +45,7 @@ const WelcomeScreen = () => {
                 size="md"
                 color="dark"
                 underline
+                pressableClassName="p-0"
                 onPress={() => openURL("https://google.com")}
               />,
               <StyledText
@@ -51,10 +53,17 @@ const WelcomeScreen = () => {
                 color="dark"
                 underline
                 onPress={() => openURL("https://youtube.com")}
+                pressableClassName="p-0 "
               />,
+              <StyledText
+                size="md"
+                color="white"
+                className="w-full text-center"
+              />,
+              <StyledText size="md" color="white" />,
             ]}
           />
-        </StyledText>
+        </View>
       </View>
     </View>
   );

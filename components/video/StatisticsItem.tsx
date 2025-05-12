@@ -9,6 +9,13 @@ interface StatisticsItemProps {
   className?: string;
 }
 
+/**
+ * Displays a statistics item with an icon and value
+ * @param iconName - The name of the icon to display
+ * @param value - The value associated with the statistic
+ * @param className - Optional className override for custom styling
+ */
+
 const StatisticsItem = ({
   iconName,
   value,

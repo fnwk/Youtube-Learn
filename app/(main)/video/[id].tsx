@@ -7,7 +7,6 @@ import { useVideoDetails } from "@/api/queries/videoDetails.query";
 import { useLocalSearchParams } from "expo-router";
 import { tailwindColors } from "@/utils/colors";
 import { useT } from "@/i18n/useTranslation";
-import StatisticsItem from "@/components/video/StatisticsItem";
 import TabbedContent from "@/components/video/TabbedContent";
 
 /**

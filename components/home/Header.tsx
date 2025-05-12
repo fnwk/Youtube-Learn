@@ -13,6 +13,10 @@ const HomeHeader = () => {
     inputRef.current?.blur();
   };
 
+  const navigateToSettings = () => {
+    router.push("/settings");
+  };
+
   return (
     <View className="flex-row items-center px-8 mb-2">
       <CustomTextInput
@@ -21,7 +25,12 @@ const HomeHeader = () => {
         placeholder={t("searchPlaceholder")}
         onFocus={navigateToSearch}
       />
-      <IconButton iconName="settings" size={32} className="ml-3" />
+      <IconButton
+        iconName="settings"
+        size={32}
+        className="ml-3"
+        onPress={navigateToSettings}
+      />
     </View>
   );
 };

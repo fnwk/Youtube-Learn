@@ -1,9 +1,16 @@
-import { FlatList, Modal, Pressable, View } from "react-native";
+import { FlatList, Modal, View } from "react-native";
 import { AppButton, StyledText } from "../ui";
 import { useT } from "@/i18n/useTranslation";
 import RadioButton from "../ui/RadioButton";
 import { useState } from "react";
 import { SortingOption, SortingOptions } from "@/types/sorting";
+
+/**
+ * Sorting modal component for selecting a sorting option
+ * @param visible - Controls the visibility of the modal
+ * @param onRequestClose - Function to close the modal
+ * @param onConfirm - Function to handle the selected sorting option and confirm
+ */
 
 interface SortingModalProps {
   visible: boolean;
@@ -24,12 +31,22 @@ const SortingModal = ({
     useState<SortingOption>("viewCount");
 
   return (
-    <Modal visible={visible} animationType="fade" transparent={true}>
+    <Modal
+      visible={visible}
+      animationType="fade"
+      transparent={true}
+      style={{
+        backgroundColor: "white",
+        margin: 15,
+        alignItems: undefined,
+        justifyContent: undefined,
+      }}
+    >
       <View
         className="flex-1 bg-[#202121e0] px-4"
         onTouchEnd={onRequestClose}
       />
-      <View className="absolute  bg-gray rounded-3xl px-6 py-12 w-[82%] h-1/2 self-center top-1/4">
+      <View className="absolute bg-gray rounded-3xl px-6 py-12 w-[82%] h-1/2 self-center top-1/4">
         <StyledText
           size="2xl"
           weight="semibold"

@@ -9,6 +9,12 @@ import { StyledText } from "@/components/ui";
 import type { YoutubeVideo } from "@/types/youtube";
 import { router } from "expo-router";
 
+/**
+ * Video card component displaying a thumbnail, title, and channel information
+ * @param video - YouTube video object containing metadata like title, channel, and thumbnails
+ * @param variant - Layout variant for the card ("small" or "large")
+ */
+
 type Variant = "small" | "large";
 
 interface VideoCardProps {
@@ -58,7 +64,7 @@ const VideoCard = ({ video, variant = "small" }: VideoCardProps) => {
         <Animated.View style={animatedStyle}>
           <Image
             source={{ uri: thumbnail }}
-            className="rounded-2xl bg-dark w-full"
+            className="rounded-2xl w-full"
             style={{
               height: variant === "small" ? 112 : 225,
             }}
