@@ -4,31 +4,33 @@ import { IconButton, StyledText } from "@/components/ui";
 import { tailwindColors } from "@/utils/colors";
 import formatTime from "@/utils/formatTime";
 
-type Props = {
+interface VideoControlsProps {
   paused: boolean;
   muted: boolean;
+  currentTime: number;
+  duration: number;
   onPlayPause: () => void;
   onMute: () => void;
   onSeekForward: () => void;
   onSeekBackward: () => void;
   onBack: () => void;
-  currentTime: number;
-  duration: number;
   onSlide: (value: number) => void;
-};
+  onToggleFullScreen: () => void;
+}
 
 const VideoControls = ({
   paused,
   muted,
+  currentTime,
+  duration,
   onPlayPause,
   onMute,
   onSeekForward,
   onSeekBackward,
   onBack,
-  currentTime,
-  duration,
   onSlide,
-}: Props) => {
+  onToggleFullScreen,
+}: VideoControlsProps) => {
   return (
     <View className="absolute top-0 left-0 right-0 bottom-0 justify-between p-4 pb-0 w-full">
       <View className="flex-row justify-between">
@@ -66,7 +68,7 @@ const VideoControls = ({
           </StyledText>
           <IconButton
             iconName="fullscreen"
-            onPress={() => {}}
+            onPress={onToggleFullScreen}
             className="translate-y-[15]"
           />
         </View>

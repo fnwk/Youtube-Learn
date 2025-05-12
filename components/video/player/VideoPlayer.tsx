@@ -3,6 +3,7 @@ import {
   Dimensions,
   TouchableWithoutFeedback,
   StyleSheet,
+  ActivityIndicator,
 } from "react-native";
 import Video, {
   OnLoadData,
@@ -29,6 +30,7 @@ const VideoPlayer = ({ setCurrentTime: sendCurrentTime }: VideoPlayerProps) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const togglePlayPause = () => setPaused((prev) => !prev);
   const toggleMute = () => setMuted((prev) => !prev);
@@ -50,6 +52,7 @@ const VideoPlayer = ({ setCurrentTime: sendCurrentTime }: VideoPlayerProps) => {
 
   const handleLoad = (data: OnLoadData) => {
     setDuration(data.duration);
+    setLoading(false);
   };
 
   const handleProgress = (data: OnProgressData) => {
@@ -89,6 +92,12 @@ const VideoPlayer = ({ setCurrentTime: sendCurrentTime }: VideoPlayerProps) => {
         </View>
       </TouchableWithoutFeedback>
 
+      {loading && (
+        <View className="absolute top-0 left-0 right-0 bottom-0 items-center justify-center bg-[#00000025]">
+          <ActivityIndicator size="small" color="#fff" />
+        </View>
+      )}
+
       {overlayVisible && (
         <View
           style={{
@@ -103,8 +112,7 @@ const VideoPlayer = ({ setCurrentTime: sendCurrentTime }: VideoPlayerProps) => {
         <VideoControls
           paused={paused}
           muted={muted}
-          isFullscreen={isFullscreen}
-          onToggleFullscreen={toggleFullscreen}
+          onToggleFullScreen={toggleFullscreen}
           onPlayPause={togglePlayPause}
           onMute={toggleMute}
           onSeekForward={() => seekBy(10)}

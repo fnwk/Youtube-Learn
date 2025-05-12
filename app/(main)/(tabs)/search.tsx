@@ -66,7 +66,7 @@ const Search = () => {
               <StyledText
                 size="lg"
                 weight="semibold"
-                className="w-full text-center"
+                className="w-full text-center mb-6"
               >
                 {t("notFound")}
               </StyledText>
@@ -80,7 +80,7 @@ const Search = () => {
                 <View className="px-8" key={idx}>
                   <SkeletonContainer loading>
                     <View
-                      className="rounded-2xl bg-dark w-full mb-6"
+                      className="rounded-2xl bg-white w-full mb-6"
                       style={{
                         height: 225,
                       }}

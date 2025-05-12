@@ -49,7 +49,6 @@ const VideoScreen = () => {
     statistics: { viewCount, likeCount },
   } = videoDetails;
 
-  console.log("sippet", videoDetails.snippet);
   return (
     <View className="flex-1 bg-white ">
       <VideoPlayer setCurrentTime={setCurrentTime} />
