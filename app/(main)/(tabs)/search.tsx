@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View, FlatList } from "react-native";
+import { View, FlatList, RefreshControl } from "react-native";
 import { useSearchVideos } from "@/api/queries/searchVideos.query";
 import { useLocalSearchParams } from "expo-router";
 import { VideoCard } from "@/components/video";
@@ -21,7 +21,7 @@ const Search = () => {
     useState<SortingOption>("viewCount");
 
   const debouncedQuery = useDebounce(input, 600);
-  const { data, fetchNextPage, isFetching, isLoading, isError } =
+  const { data, fetchNextPage, isFetching, isLoading, isError, refetch } =
     useSearchVideos(debouncedQuery, sortingOption);
 
   // Remove duplicates from the videos array (if any), flatten the pages, and map to unique video IDs
@@ -38,6 +38,8 @@ const Search = () => {
       typeof searchTerm === "string" ? searchTerm : searchTerm?.[0] || "",
     );
   }, [searchTerm]);
+
+  const showLoading = isFetching || isLoading || input !== debouncedQuery;
 
   return (
     <View className="flex-1 pt-5">
@@ -62,7 +64,7 @@ const Search = () => {
         )}
         ListEmptyComponent={() => (
           <View>
-            {isLoading || isFetching || input !== debouncedQuery ? null : (
+            {showLoading ? null : (
               <StyledText
                 size="lg"
                 weight="semibold"
@@ -74,7 +76,7 @@ const Search = () => {
           </View>
         )}
         ListFooterComponent={
-          (isFetching || isLoading || input !== debouncedQuery) && !isError ? (
+          showLoading && !isError ? (
             <>
               {new Array(10).fill(null).map((_, idx) => (
                 <View className="px-8" key={idx}>

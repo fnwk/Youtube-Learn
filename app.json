@@ -14,8 +14,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logo.png",
-        "backgroundColor": "#ff00ff"
+        "foregroundImage": "./assets/images/app-icon.png",
+        "backgroundColor": "#8D99AE"
       },
       "package": "com.fnwk.youtubelearn"
     },
