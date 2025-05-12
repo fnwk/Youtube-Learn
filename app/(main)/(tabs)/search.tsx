@@ -7,6 +7,7 @@ import Header from "@/components/search/Header";
 import type { YoutubeVideo } from "@/types/youtube";
 import { useDebounce } from "@/utils/hooks/useDebounce";
 import { SortingOption } from "@/types/sorting";
+import SkeletonContainer from "@/components/ui/SkeletonContainer";
 
 const Search = () => {
   const { searchTerm, focused } = useLocalSearchParams();
@@ -17,13 +18,19 @@ const Search = () => {
     useState<SortingOption>("viewCount");
 
   const debouncedQuery = useDebounce(input, 600);
-  const { data, fetchNextPage, isFetchingNextPage } = useSearchVideos(
+  const { data, fetchNextPage, isFetching, isLoading } = useSearchVideos(
     debouncedQuery,
     sortingOption,
   );
 
-  const videos: YoutubeVideo[] =
-    data?.pages.flatMap((page) => page.items as YoutubeVideo[]) || [];
+  // Remove duplicates from the videos array (if any), flatten the pages, and map to unique video IDs
+  const videos: YoutubeVideo[] = Array.from(
+    new Map(
+      (data?.pages.flatMap((page) => page.items as YoutubeVideo[]) || []).map(
+        (video) => [video.id.videoId, video],
+      ),
+    ).values(),
+  );
 
   useEffect(() => {
     setInput(
@@ -52,6 +59,24 @@ const Search = () => {
             <VideoCard video={item} variant="large" />
           </View>
         )}
+        ListFooterComponent={
+          isFetching || isLoading ? (
+            <>
+              {new Array(10).fill(null).map((_, idx) => (
+                <View className="px-8" key={idx}>
+                  <SkeletonContainer loading>
+                    <View
+                      className="rounded-2xl bg-dark w-full mb-6"
+                      style={{
+                        height: 225,
+                      }}
+                    />
+                  </SkeletonContainer>
+                </View>
+              ))}
+            </>
+          ) : null
+        }
       />
     </View>
   );

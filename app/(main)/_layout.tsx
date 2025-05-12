@@ -1,20 +1,20 @@
-import {Stack} from "expo-router";
+import { Stack } from "expo-router";
 
 export default function MainLayout() {
-    return (
-        <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen
-                name="(main)"
-                options={{
-                    headerShown: false,
-                }}
-            />
-            <Stack.Screen
-                name="video/[videoId]"
-                options={{
-                    headerShown: false,
-                }}
-            />
-        </Stack>
-    )
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen
+        name="(tabs)"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="video/[id]"
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack>
+  );
 }

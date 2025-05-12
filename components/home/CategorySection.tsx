@@ -5,6 +5,7 @@ import { View, FlatList } from "react-native";
 import { useSearchVideos } from "@/api/queries/searchVideos.query";
 import { router } from "expo-router";
 import type { YoutubeVideo } from "@/types/youtube";
+import SkeletonContainer from "../ui/SkeletonContainer";
 
 interface CategorySectionProps {
   title: string;
@@ -12,7 +13,7 @@ interface CategorySectionProps {
 
 const CategorySection = ({ title }: CategorySectionProps) => {
   const { t } = useT("home");
-  const { data, fetchNextPage } = useSearchVideos(
+  const { data, isFetching, isLoading, fetchNextPage } = useSearchVideos(
     `"${title.toLowerCase().trim()}" tutorial`,
     "viewCount",
   );
@@ -21,8 +22,18 @@ const CategorySection = ({ title }: CategorySectionProps) => {
     router.push({ pathname: "/search", params: { searchTerm: title } });
   };
 
-  const videos: YoutubeVideo[] =
-    data?.pages.flatMap((page) => page.items as YoutubeVideo[]) || [];
+  // Remove duplicates from the videos array (if any), flatten the pages, and map to unique video IDs
+  const videos: YoutubeVideo[] = Array.from(
+    new Map(
+      (data?.pages.flatMap((page) => page.items as YoutubeVideo[]) || []).map(
+        (video) => [video.id.videoId, video],
+      ),
+    ).values(),
+  );
+
+  if (isLoading || isFetching) {
+    console.log(title, isLoading, isFetching);
+  }
 
   return (
     <View className="border-b-dark border-b-2 mt-4 pb-8">
@@ -50,6 +61,22 @@ const CategorySection = ({ title }: CategorySectionProps) => {
             <VideoCard video={item} variant="small" />
           </View>
         )}
+        ListFooterComponent={
+          isFetching || isLoading ? (
+            <View className="flex-row">
+              {new Array(10).fill(null).map((_, idx) => (
+                <View className="mr-8" key={idx}>
+                  <SkeletonContainer loading>
+                    <View
+                      className="rounded-2xl bg-dark w-[180px]"
+                      style={{ height: 112 }}
+                    />
+                  </SkeletonContainer>
+                </View>
+              ))}
+            </View>
+          ) : null
+        }
       />
     </View>
   );
