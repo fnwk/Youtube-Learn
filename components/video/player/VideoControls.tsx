@@ -3,6 +3,8 @@ import Slider from "@react-native-community/slider";
 import { IconButton, StyledText } from "@/components/ui";
 import { tailwindColors } from "@/utils/colors";
 import formatTime from "@/utils/formatTime";
+import { useExternalPlaybackAvailability } from "react-airplay";
+import cn from "@/utils/cn";
 
 interface VideoControlsProps {
   paused: boolean;
@@ -16,6 +18,7 @@ interface VideoControlsProps {
   onBack: () => void;
   onSlide: (value: number) => void;
   onToggleFullScreen: () => void;
+  onToggleAirplay: () => void;
 }
 
 const VideoControls = ({
@@ -30,16 +33,29 @@ const VideoControls = ({
   onBack,
   onSlide,
   onToggleFullScreen,
+  onToggleAirplay,
 }: VideoControlsProps) => {
+  const isExternalPlaybackAvailable = useExternalPlaybackAvailability();
+
   return (
     <View className="absolute top-0 left-0 right-0 bottom-0 justify-between p-4 pb-0 w-full">
       <View className="flex-row justify-between">
         <IconButton iconName="leftarrow" onPress={onBack} withBackground />
-        <IconButton
-          iconName={muted ? "volume" : "volume"}
-          onPress={onMute}
-          withBackground
-        />
+        <View className="flex-row">
+          <IconButton
+            iconName={"volume"}
+            onPress={onMute}
+            withBackground
+            className="mr-2"
+          />
+          <View className={cn(isExternalPlaybackAvailable ? "" : "opacity-30")}>
+            <IconButton
+              iconName="airplay"
+              onPress={onToggleAirplay}
+              withBackground
+            />
+          </View>
+        </View>
       </View>
 
       <View className="absolute flex-row justify-center items-center top-1/2 self-center">

@@ -10,9 +10,20 @@ import Video, {
   OnProgressData,
   VideoRef,
 } from "react-native-video";
+import {
+  showRoutePicker,
+  useExternalPlaybackAvailability,
+} from "react-airplay";
 import { useRef, useState } from "react";
 import VideoControls from "./VideoControls";
 import { router } from "expo-router";
+import Toast from "react-native-toast-message";
+import { useT } from "@/i18n/useTranslation";
+
+/**
+ * Custom video player component using react-native-video with overlay controls, AirPlay support, and fullscreen playback
+ * @param setCurrentTime - Callback to sync current playback time with parent component
+ */
 
 interface VideoPlayerProps {
   setCurrentTime: (time: number) => void;
@@ -22,7 +33,10 @@ const { width } = Dimensions.get("window");
 const height = (width * 9) / 16;
 
 const VideoPlayer = ({ setCurrentTime: sendCurrentTime }: VideoPlayerProps) => {
+  const { t } = useT("video");
   const videoRef = useRef<VideoRef>(null);
+  const isExternalPlaybackAvailable = useExternalPlaybackAvailability();
+
   const [paused, setPaused] = useState(false);
   const [muted, setMuted] = useState(false);
   const [controlsVisible, setControlsVisible] = useState(false);
@@ -72,6 +86,18 @@ const VideoPlayer = ({ setCurrentTime: sendCurrentTime }: VideoPlayerProps) => {
     }
   };
 
+  const toggleAirplay = () => {
+    if (!isExternalPlaybackAvailable) {
+      Toast.show({
+        type: "error",
+        text1: t("airplayNotAvailable"),
+        position: "bottom",
+      });
+      return;
+    }
+    showRoutePicker({ prioritizesVideoDevices: true });
+  };
+
   return (
     <View className="relative bg-black" style={{ width, height }}>
       <TouchableWithoutFeedback onPress={handleVideoFocus}>
@@ -112,6 +138,7 @@ const VideoPlayer = ({ setCurrentTime: sendCurrentTime }: VideoPlayerProps) => {
         <VideoControls
           paused={paused}
           muted={muted}
+          onToggleAirplay={toggleAirplay}
           onToggleFullScreen={toggleFullscreen}
           onPlayPause={togglePlayPause}
           onMute={toggleMute}

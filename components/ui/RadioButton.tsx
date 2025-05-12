@@ -7,6 +7,13 @@ interface RadioButtonProps {
   label: string;
 }
 
+/**
+ * Custom radio button component with selectable state and label
+ * @param isSelected - Whether the radio button is currently selected
+ * @param onPress - Callback triggered when the radio button is pressed
+ * @param label - Text label displayed next to the radio button
+ */
+
 const RadioButton = ({ isSelected, onPress, label }: RadioButtonProps) => {
   return (
     <Pressable className="flex-row items-center mb-4" onPress={onPress}>

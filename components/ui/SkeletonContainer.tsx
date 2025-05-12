@@ -10,6 +10,12 @@ import Animated, {
 } from "react-native-reanimated";
 import { LinearGradient } from "expo-linear-gradient";
 
+/**
+ * Animated skeleton loader wrapper using masked views and gradient shimmer effect
+ * @param loading - Whether to display the loading skeleton or the actual children
+ * @param children - The content to render once loading is complete
+ */
+
 interface SkeletonContainerProps extends PropsWithChildren {
   loading?: boolean;
 }

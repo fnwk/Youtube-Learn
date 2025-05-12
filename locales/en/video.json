@@ -7,5 +7,6 @@
   "likes": "{{count}} likes",
   "failedToLoad": "Failed to load video details",
   "enterNotes": "Enter notes...",
-  "addNote": "Add note"
+  "addNote": "Add note",
+  "airplayNotAvailable": "AirPlay is not available"
 }

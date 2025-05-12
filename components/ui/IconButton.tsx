@@ -7,7 +7,16 @@ import Animated, {
 import { Icon, IconType } from "@/assets/Icon";
 import cn from "@/utils/cn";
 
-// Fix typing for AnimatedPressable to support children + PressableProps
+/**
+ * Animated icon button with optional background and press scaling effect
+ * @param iconName - Name of the icon from the custom Icon set
+ * @param withBackground - Whether to show a semi-transparent background behind the icon
+ * @param size - Size of the icon (width and height)
+ * @param style - Additional style for the pressable container
+ * @param className - Tailwind className override
+ * @param ...props - Additional Pressable props passed to the component
+ */
+
 const AnimatedPressable = Animated.createAnimatedComponent(
   Pressable,
 ) as React.ComponentType<PressableProps>;
